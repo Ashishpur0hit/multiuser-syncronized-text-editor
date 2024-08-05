@@ -1,9 +1,8 @@
 import express from 'express';
 import http from 'http';
-import path  from 'path';
 import { Server } from 'socket.io';
 import ACTIONS from './src/actions.js';
-import { fileURLToPath } from 'url';
+
 
 const app=express();
 const server = http.createServer(app);
@@ -13,6 +12,7 @@ const io = new Server(server,{
     }
 })
 
+<<<<<<< HEAD
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
@@ -23,6 +23,10 @@ const io = new Server(server,{
 //     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 // });
 
+=======
+
+
+>>>>>>> 84f2e3322143483e9637e52a3a25c33280367c42
 const userSocketMap={};
 
 function getAllConnectedClients(roomId){
