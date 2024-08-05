@@ -12,21 +12,9 @@ const io = new Server(server,{
     }
 })
 
-<<<<<<< HEAD
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 
 
 
-// app.use(express.static('dist'));
-// app.use((req, res, next) => {
-//     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-// });
-
-=======
-
-
->>>>>>> 84f2e3322143483e9637e52a3a25c33280367c42
 const userSocketMap={};
 
 function getAllConnectedClients(roomId){
