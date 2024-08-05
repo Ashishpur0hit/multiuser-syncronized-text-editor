@@ -13,15 +13,15 @@ const io = new Server(server,{
     }
 })
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 
 
-app.use(express.static('dist'));
-app.use((req, res, next) => {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-});
+// app.use(express.static('dist'));
+// app.use((req, res, next) => {
+//     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+// });
 
 const userSocketMap={};
 
