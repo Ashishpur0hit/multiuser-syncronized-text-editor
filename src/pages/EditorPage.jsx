@@ -5,6 +5,7 @@ import { initSocket } from '../socket';
 import ACTIONS from '../actions';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import WhiteBoard from '../coponents/WhiteBoard';
 
 function EditorPage() {
 
@@ -15,6 +16,7 @@ function EditorPage() {
   const navigate = useNavigate();
   const { roomId } = useParams();
   const code_ref = useRef(null);
+  const [whiteboard_visible, setWhiteboardVisible] = useState(false);
 
   useEffect(() => {
     const init = async () => {
@@ -89,7 +91,13 @@ function EditorPage() {
   }
 
   return (
-    <div className='grid grid-cols-3 sm:grid-cols-10 md:grid-cols-12 h-screen'>
+
+    // <div className='h-full w-full'>
+
+    //  <WhiteBoard></WhiteBoard>
+
+    // </div>
+    <div className='grid grid-cols-3 sm:grid-cols-10 md:grid-cols-12 h-screen bg-gray-800'>
       
       <div className='bg-gray-800 flex flex-col items-center h-screen col-span-1 sm:col-span-3 md:col-span-2 overflow-y-auto scrollbar-hide'>
         <img className='h-24' src='https://static.vecteezy.com/system/resources/previews/009/887/458/original/coding-illustration-3d-png.png' alt="code-sync-logo" />
@@ -106,10 +114,22 @@ function EditorPage() {
         <button onClick={leaveRoom} className='hover:bg-gray-900 rounded-lg ps-5 pe-5 pt-2 pb-2 bg-black mt-2 text-white font-semibold w-full sm:w-auto text-sm'>
           Leave
         </button>
+
+        <button onClick={() => setWhiteboardVisible(!whiteboard_visible)} className='hover:bg-gray-900 rounded-lg ps-5 pe-5 pt-2 pb-2 bg-black mt-2 text-white font-semibold w-full sm:w-auto text-sm'>
+          Switch
+        </button>
+
+        {/* Toggle Button
+        <button
+          onClick={() => setWhiteboardVisible(!whiteboard_visible)}
+          className="w-20 p-2 bg-blue-500 text-white rounded mt-2"
+        >
+          {whiteboard_visible ? 'Editor' : 'Whiteboard'}
+        </button> */}
       </div>
 
       <div className='h-screen col-span-2 sm:col-span-7 md:col-span-10 overflow-y-auto scrollbar-hide items-top'>
-        <Editor socket_ref={socket_ref} roomId={roomId} onCodeChange={(code)=>{code_ref.current=code}}/>
+        {!whiteboard_visible ? <Editor socket_ref={socket_ref} roomId={roomId} onCodeChange={(code)=>{code_ref.current=code}}/> : <WhiteBoard/>}
       </div>
     </div>
   );
